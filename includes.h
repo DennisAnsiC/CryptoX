@@ -15,6 +15,5 @@
 #include <Shlwapi.h>
 #include <stdio.h>
 #include <string.h>
-#include <libtext.h>
 
 void dbg(const char * format, ...);

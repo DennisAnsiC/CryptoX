@@ -94,26 +94,26 @@ WindowCallback (HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
          switch (LOWORD(wParam)) {
             case ID_BTN_ENCRYPT :
                length = 1024;
-               string = (char *)lt_malloc(length);
+               string = (char *)malloc(length);
                memset(string, 0x00, length);
                GetDlgItemTextA(hWnd, ID_EDT_INPUT, string, 399);
                result = encrypt(string);
                if (result != CRYPTOX_ERROR) SetDlgItemTextA(hWnd, ID_EDT_OUTPUT, string);
                else  SetDlgItemTextA(hWnd, ID_EDT_OUTPUT, "Erro ao criptografar string.");
-               lt_free(string);
+               free(string);
                SetFocus(GetDlgItem(hWnd, ID_EDT_OUTPUT));
                SendMessage(GetDlgItem(hWnd, ID_EDT_OUTPUT), EM_SETSEL, 0, -1);
                break;
 
             case ID_BTN_DECRYPT :
                length = 400;
-               string = (char *)lt_malloc(length);
+               string = (char *)malloc(length);
                memset(string, 0x00, length);
                GetDlgItemTextA(hWnd, ID_EDT_INPUT, string, 399);
                result = decrypt(string);
                if (result != CRYPTOX_ERROR) SetDlgItemTextA(hWnd, ID_EDT_OUTPUT, string);
                else SetDlgItemTextA(hWnd, ID_EDT_OUTPUT, "Erro ao descriptografar string.");
-               lt_free(string);
+               free(string);
                SetFocus(GetDlgItem(hWnd, ID_EDT_OUTPUT));
                SendMessage(GetDlgItem(hWnd, ID_EDT_OUTPUT), EM_SETSEL, 0, -1);
                break;
